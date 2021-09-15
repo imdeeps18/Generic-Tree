@@ -1,0 +1,15 @@
+ public static void display(Node root) {
+        StringBuilder sb = new StringBuilder();  //for every call the sb is created new at every recursive call
+        sb.append(root.data);    //data is appended to the sb
+        sb.append(" -> ");
+
+        for (int i=0;i<root.child.size();i++) {    //the loop will go for the root's child's arraylist
+            sb.append(root.child.get(i).data);    //node type method's data is appended to the sb
+            sb.append(", ");
+        }
+        sb.append(".");
+        System.out.println(sb);
+        for(int i=0;i<root.child.size();i++){   //this loop will also go for the every root's child's arraylist node
+            display(root.child.get(i));   //this is node type passed node in the display method
+        }
+    }
