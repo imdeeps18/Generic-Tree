@@ -1,0 +1,23 @@
+private static class Node{
+        int data;
+        ArrayList<Node> child = new ArrayList<>();
+    }
+    private static Node createTree(int[] arr){
+        Stack<Node> st = new Stack<>();
+        Node root = null;
+        for (int j : arr) {
+            if (j == -1)
+                st.pop();
+            else {
+                Node temp = new Node();
+                temp.data = j;
+                if (st.size() > 0)
+                    st.peek().child.add(temp);
+                else
+                    root = temp;
+
+                st.push(temp);
+            }
+        }
+        return root;
+    }
