@@ -1,0 +1,25 @@
+ public static int maximum(Node root) {
+        int ma = root.data;
+        for(Node c: root.child) {
+            int ma2 = maximum(c);
+            ma = Math.max(ma2, ma);
+        }
+        return ma;
+    }
+    public static int heightOfTree(Node root) {
+        int height = 0;
+        for(Node c : root.child) {
+            int h = heightOfTree(c);
+            height = Math.max(height, h);
+        }
+        height = height+1;
+        return height;
+    }
+    
+     public static int size(Node root) {
+        int s = 1;
+        for(int i=0;i<root.child.size();i++){
+            s += size(root.child.get(i));
+        }
+        return s;
+    }
