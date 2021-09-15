@@ -1,0 +1,41 @@
+//int[] arr = {10, 20, 50, -1, 60, -1, -1, 30, 70, -1, 80, 110, -1, 120, -1, -1, 90, -1, -1, 40, 100, -1,-1, -1};
+
+
+
+ public static void levelOrderTraversalZigZag(Node root){
+        Queue<Node> q = new LinkedList<>();
+        q.add(root);
+        q.add(null);
+        boolean f=false;
+//        here we have used the flag for just checking what to do and when to reverse
+//        means when the flag is true just reverse the list and print it
+        ArrayList<Integer> list = new ArrayList<>();
+        while(q.size()>1){
+            Node temp = q.peek();
+            q.remove();
+
+            if(temp==null){
+                f=!f;
+                if(f)
+                    list = new ArrayList<>();
+                q.add(null);
+                if(list.size()>0){
+                    Collections.reverse(list);
+                    System.out.print(list.toString());
+                }
+                System.out.println();
+            }
+            else{
+                if(!f)
+                    System.out.print(temp.data+" ");
+                else
+                    list.add(temp.data);
+                q.addAll(temp.child);
+            }
+        }
+//        this will execute only when the list have some data, and we came out of the while loop
+        if(list.size()>0){
+            Collections.reverse(list);
+            System.out.print(list.toString());
+        }
+    }
